@@ -43,3 +43,10 @@ class EntitlementsClient(ServiceBaseClient):
         :param group: The id of the group.
         """
         return self._client.get_returning_json(self.api_url(f"groups/{group}/members"))
+
+    def get_product(self, product_id):
+        """
+        Get info for a product.
+        :param product_id: The id of the group.
+        """
+        return self._client.get_returning_json(self.api_url(f"products/{product_id}"))
