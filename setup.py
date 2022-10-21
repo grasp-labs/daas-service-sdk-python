@@ -16,7 +16,7 @@ setup(
     author_email="yuan@grasplabs.com",
     license="MIT",
     classifiers=[
-        "Development Status :: 1 - Development",
+        "Development Status :: 3 - Alpha",
         "Intended Audience :: Developers",
         "Topic :: Software Development :: Build Tools",
         "Environment :: Console",
