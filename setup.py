@@ -1,4 +1,3 @@
-import os
 from glob import glob
 from os.path import basename
 from os.path import splitext
@@ -29,8 +28,8 @@ setup(
     ],
     keywords="daas service sdk python",
     python_requires=">=3.7",
-    packages=find_packages("daas_service_sdk"),
-    package_dir={"": "daas_service_sdk"},
+    packages=find_packages("src"),
+    package_dir={"": "src"},
     py_modules=[splitext(basename(path))[0] for path in glob("daas_service_sdk/*.py")],
     include_package_data=True,
     install_requires=["requests"],
