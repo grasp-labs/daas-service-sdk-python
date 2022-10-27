@@ -8,6 +8,8 @@ import requests
 from typing import Union, Dict, List
 from requests import Response, HTTPError
 
+from .credentials import DaasBaseCredential
+
 logger = logging.getLogger(__name__)
 
 
@@ -19,15 +21,15 @@ class BaseClient:
     def __init__(
         self,
         server_url: str,
-        token: str,
+        credential: DaasBaseCredential,
     ):
         """
         Setup the new client
         :param server_url: url of the server without any path e.g. https://www.test.com
-        :param token: credentials used for connection
+        :param credential: credentials used for connection
         """
         self._server_url = server_url
-        self._token = token
+        self._credential = credential
 
     @property
     def server_url(self) -> str:
@@ -35,9 +37,9 @@ class BaseClient:
         return self._server_url
 
     @property
-    def credentials(self) -> str:
+    def credential(self) -> str:
         """Credentials used for connection"""
-        return self._token
+        return self._credential
 
     def get_headers(self):
         """
@@ -47,7 +49,7 @@ class BaseClient:
         """
         return {
             "Content-Type": "application/json",
-            "Authorization": f"Bearer {self._token}",
+            "Authorization": f"Bearer {self._credential.get_token()}",
         }
 
     def get(self, url: str, ok_status_codes: List = None) -> Response:
