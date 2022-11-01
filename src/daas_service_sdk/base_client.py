@@ -75,6 +75,7 @@ class BaseClient:
         Raises:
             HTTPError: Raised if the get returns a status other than those in ok_status_codes
         """
+        print(url)
         if ok_status_codes is None:
             ok_status_codes = [200]
         response = self.get(url, ok_status_codes)

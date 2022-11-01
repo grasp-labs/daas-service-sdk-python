@@ -1,3 +1,5 @@
+from requests.exceptions import HTTPError
+
 from daas_service_sdk.credentials import DaasBasicCredential
 from daas_service_sdk.base_client import BaseClient
 from daas_service_sdk.entitlements import EntitlementsClient
@@ -9,8 +11,8 @@ def main():
     """
 
     cred = DaasBasicCredential(
-        username="",
-        password="",
+        username="graspdemoadmin@test.com",
+        password="sjhs8734SJksj83!",
         token_endpoint="https://auth-dev.grasp-daas.com/rest-auth/login/",
     )
     # print(cred.get_token())
@@ -20,7 +22,11 @@ def main():
     entitlements_client = EntitlementsClient(client=client, is_dev=True)
 
     print(entitlements_client.is_healthy())
-    print(entitlements_client.list_groups())
+    # print(entitlements_client.list_groups())
+    try:
+        print(entitlements_client.list_products())
+    except HTTPError as exc:
+        print(exc.response, exc.response.content)
 
 
 if __name__ == "__main__":
