@@ -1,3 +1,4 @@
+import os
 from requests.exceptions import HTTPError
 
 from daas_service_sdk.credentials import DaasBasicCredential
@@ -11,8 +12,8 @@ def main():
     """
 
     cred = DaasBasicCredential(
-        username="graspdemoadmin@test.com",
-        password="sjhs8734SJksj83!",
+        username=os.environ.get("username"),
+        password=os.environ.get("password"),
         token_endpoint="https://auth-dev.grasp-daas.com/rest-auth/login/",
     )
     # print(cred.get_token())
