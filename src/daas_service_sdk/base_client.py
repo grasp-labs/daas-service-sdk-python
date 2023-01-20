@@ -65,6 +65,19 @@ class BaseClient:
             raise HTTPError(response=response)
         return response
 
+    def delete(self, url: str, ok_status_codes: List = None) -> Response:
+        """GET from the specified url
+        :param url: url to GET from to
+        :param ok_status_codes: list of status code indicating success
+        Raises:
+            HTTPError: Raised if ok_status_codes are passed and the get returns a different status
+        """
+        headers = self.get_headers()
+        response = requests.delete(url, headers=headers)
+        if ok_status_codes is not None and response.status_code not in ok_status_codes:
+            raise HTTPError(response=response)
+        return response
+
     def get_returning_json(self, url: str, ok_status_codes: list = None) -> Dict:
         """
         Get data from the specified url in json format.
@@ -75,7 +88,6 @@ class BaseClient:
         Raises:
             HTTPError: Raised if the get returns a status other than those in ok_status_codes
         """
-        print(url)
         if ok_status_codes is None:
             ok_status_codes = [200]
         response = self.get(url, ok_status_codes)

@@ -16,14 +16,10 @@ def main():
         password=os.environ.get("password"),
         token_endpoint="https://auth-dev.grasp-daas.com/rest-auth/login/",
     )
-    # print(cred.get_token())
-
     client = BaseClient(server_url="https://grasp-daas.com/", credential=cred)
 
     entitlements_client = EntitlementsClient(client=client, is_dev=True)
 
-    print(entitlements_client.is_healthy())
-    # print(entitlements_client.list_groups())
     try:
         print(entitlements_client.list_products())
     except HTTPError as exc:

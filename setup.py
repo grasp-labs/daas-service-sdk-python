@@ -4,7 +4,7 @@ from os.path import splitext
 from setuptools import setup, find_packages
 
 
-__VERSION__ = "0.0.4"
+__VERSION__ = "0.0.5"
 
 setup(
     name="daas-service-sdk",
