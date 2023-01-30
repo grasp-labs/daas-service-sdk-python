@@ -14,3 +14,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - 🔧 add trailing slash to the end of the url to avoid 503
+
+## 0.0.5 - 2023-01-20
+
+### Changed
+
+- 🔧 rename products route to acl
