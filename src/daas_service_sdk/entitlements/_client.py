@@ -49,17 +49,17 @@ class EntitlementsClient(ServiceBaseClient):
         Get info for a product.
         :param product_id: The id of the group.
         """
-        return self._client.get_returning_json(self.api_url(f"products/{product_id}/"))
+        return self._client.get_returning_json(self.api_url(f"acl/{product_id}/"))
 
     def delete_product(self, product_id):
         """
         Get info for a product.
         :param product_id: The id of the group.
         """
-        return self._client.delete(self.api_url(f"products/{product_id}/"))
+        return self._client.delete(self.api_url(f"acl/{product_id}/"))
 
     def list_products(self):
         """
         Get info for all products.
         """
-        return self._client.get_returning_json(self.api_url(f"products/"))
+        return self._client.get_returning_json(self.api_url(f"acl/"))
